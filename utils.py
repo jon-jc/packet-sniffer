@@ -46,7 +46,8 @@ def format_packet(packet):
         packet_info.update({
             'source_port': packet[TCP].sport,
             'destination_port': packet[TCP].dport,
-            'protocol': 'TCP'
+            'protocol': 'TCP',
+            'flags': packet[TCP].flags  # Include TCP flags in the packet info
         })
     elif UDP in packet:
         packet_info.update({
@@ -61,4 +62,3 @@ def format_packet(packet):
             'protocol': 'ICMP'
         })
     return packet_info
-
